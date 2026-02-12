@@ -1,2 +1,13 @@
-# AmdusAPI
-Modular API Hub for AI, Media Extraction, and System Utilities. Built with Node.js and Express.
+# amdusAPI
+
+modular api engine. direct scraping.
+
+## install
+npm install
+
+## run
+node index.js
+
+## api
+- GET /api/pinterest?q=...
+- GET /api/lyrics?q=...
