@@ -12,7 +12,7 @@ app.use(cors());
 const apiPath = path.join(__dirname, 'api');
 if (!fs.existsSync(apiPath)) fs.mkdirSync(apiPath);
 
-const routes = [];
+const endpoints = [];
 
 fs.readdirSync(apiPath).forEach(file => {
     if (file.endsWith('.js')) {
@@ -21,20 +21,20 @@ fs.readdirSync(apiPath).forEach(file => {
         
         app.get(`/api/${routeName}`, route.handler);
         
-        routes.push({
-            endpoint: `/api/${routeName}`,
-            description: route.description || "no description"
+        endpoints.push({
+            name: route.name || routeName,
+            path: `/api/${routeName}`,
+            usage: route.usage || "n/a"
         });
-        console.log(`loaded: /api/${routeName}`);
     }
 });
 
 app.get('/', (req, res) => {
     res.json({
-        status: "online",
-        message: "amdus api hub active",
-        available_endpoints: routes
+        status: "active",
+        engine: "amdus_core_v1",
+        routes: endpoints
     });
 });
 
-app.listen(PORT, () => console.log(`api hub live on ${PORT}`));
+app.listen(PORT, () => console.log(`server active on ${PORT}`));
