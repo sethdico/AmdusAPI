@@ -1,1 +1,15 @@
-
+module.exports = {
+    app: {
+        name: "AmdusAPI",
+        version: "2.0.0",
+        port: process.env.PORT || 3000,
+        description: "High-performance modular API engine."
+    },
+    meta: {
+        creator: "SethDico",
+        socials: {
+            github: "https://github.com/sethdico",
+            facebook: "https://facebook.com/seth09asher"
+        }
+    }
+};
